@@ -1,0 +1,312 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil\fcharset0 Calibri-Bold;}{\f1\fnil\fcharset0 Calibri;}{\f2\fnil\fcharset0 Arial-BoldMT;}{\f3\fnil Calibri;}}
+{\colortbl ;\red0\green0\blue0;\red89\green52\blue148;\red0\green255\blue255;\red0\green77\blue187;\red255\green255\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sl240\slmult1\qj\b\f0\fs32\lang22 TEMA 07 - Tipos de Fun\'e7\'f5es\par
+\cf1\b0\f1\fs22 As fun\'e7\'f5es s\'e3o rotinas criadas para efetuar diversos servi\'e7os, estes servi\'e7os s\'e3o tarefas que tem uma finalidade dentro do c\'f3digo fonte que estamos escrevendo, basta utilizar a fun\'e7\'e3o adequada para que n\'e3o haja a necessidade de repetir um mesmo c\'f3digo j\'e1 escrito por diversas vezes, chamando essa fun\'e7\'e3o em qualquer lugar do seu c\'f3digo.\par
+\par
+\cf2\b\f2 7.1 \f0\fs28 Introdu\'e7\'e3o sobre fun\'e7\'f5es\par
+\cf1\b0\f1\fs22 Temos \ul\b dois tipos de fun\'e7\'f5es dentro do PHP\ulnone\b0 , as \highlight3\b nativas\highlight0\b0  e as \highlight3\b internas\highlight0\b0 , as \ul nativas s\'e3o fun\'e7\'f5es desenvolvidas pelos engenheiros de software que organizam a linguagem do PHP\ulnone , j\'e1 as fun\'e7\'f5es \ul consideradas internas s\'e3o as que vamos criar no decorrer do nosso projeto\ulnone , software e sistema web.\par
+Vamos agora criar nossas pr\'f3prias fun\'e7\'f5es, dentro do PHP, para isso temos que respeitar algumas regras e boas pr\'e1ticas da linguagem seguindo sua sintaxe.\par
+As fun\'e7\'f5es s\'e3o blocos de c\'f3digo que podem ser reutilizados em diferentes partes do \cf0 programa, evitando repeti\'e7\'f5es e facilitando a manuten\'e7\'e3o. As fun\'e7\'f5es tamb\'e9m permitem modularizar o c\'f3digo, separando-o em partes menores e mais claras. Para criar uma fun\'e7\'e3o no PHP, usamos a palavra-chave function, seguida do nome da fun\'e7\'e3o e dos par\'e2metros entre par\'eanteses. Os par\'e2metros s\'e3o vari\'e1veis que recebem os valores que ser\'e3o usados pela fun\'e7\'e3o. Dentro das chaves, colocamos o corpo da fun\'e7\'e3o, que \'e9 o conjunto de instru\'e7\'f5es que ser\'e3o executadas quando a fun\'e7\'e3o for chamada. Para retornar um valor da fun\'e7\'e3o, usamos a palavra-chave return. Veja um exemplo de uma fun\'e7\'e3o que calcula a soma de dois n\'fameros:\par
+\par
+\cf4 <?php\par
+// Defini\'e7\'e3o da fun\'e7\'e3o\par
+function soma($num1, $num2) \{\par
+    $resultado = $num1 + $num2;\par
+    return $resultado;\par
+\}\par
+\par
+// Chamada da fun\'e7\'e3o e exibi\'e7\'e3o do resultado\par
+$x = 10;\par
+$y = 5;\par
+$saida = soma($x, $y);\par
+echo "A soma de $x e $y \'e9: $saida";\par
+?>\par
+\cf0\par
+Para usar uma fun\'e7\'e3o, \highlight3\b basta invoc\'e1-la pelo seu nome, passando os argumentos entre par\'eanteses\highlight0\b0 . Os argumentos s\'e3o os valores reais que ser\'e3o atribu\'eddos aos par\'e2metros da fun\'e7\'e3o.\par
+\par
+As fun\'e7\'f5es s\'e3o muito \ul\b\'fateis para organizar e simplificar o c\'f3digo\ulnone\b0 , al\'e9m de permitir a reutiliza\'e7\'e3o de l\'f3gicas comuns. Existem muitas \ul fun\'e7\'f5es nativas do PHP que realizam diversas tarefas, como manipular strings, arrays, datas, arquivos, etc\ulnone .\par
+\par
+
+\pard\cf2\b\f2 7.2 \f0\fs28 Fun\'e7\'f5es Ambientes nativas e cria\'e7\'e3o\par
+\b0\f1\fs26 Sintaxe de uma fun\'e7\'e3o\par
+
+\pard\sl240\slmult1\qj\cf5\b\f2\fs22 48\par
+\cf4\b0\f1 function nomedafuncao(arg ...) \{\par
+    c\'f3digo;\par
+    return \par
+\}\par
+\par
+\cf0 O nome da fun\'e7\'e3o sempre temos que seguir as boas pr\'e1ticas da programa\'e7\'e3o igual quando declaramos uma vari\'e1vel.\par
+\b C\'f3digo\b0  \f3\endash\f1  Onde colocamos o trecho da tarefa do c\'f3digo.\par
+\b Return\b0  \f3\endash\f1  Caso a fun\'e7\'e3o tenha um retorno no argumento \'e9 usado de forma opcional. \par
+\par
+Segue um exemplo de uma fun\'e7\'e3o simples sem retorno:\par
+\par
+\cf4 <?php\par
+// Defini\'e7\'e3o da fun\'e7\'e3o\par
+function cumprimentar() \{\par
+    echo "Ol\'e1, mundo!";\par
+\}\par
+\par
+// Chamada da fun\'e7\'e3o\par
+cumprimentar();\par
+?>\par
+\cf0\par
+Outro exemplo com retorno:\par
+\par
+\cf4 <?php\par
+// Defini\'e7\'e3o da fun\'e7\'e3o\par
+function gerarNumeroAleatorio() \{\par
+    $numero = rand(1, 100); // Gera um n\'famero aleat\'f3rio entre 1 e 100\par
+    return $numero; // Retorna o n\'famero gerado\par
+\}\par
+\par
+// Chamada da fun\'e7\'e3o e exibi\'e7\'e3o do resultado\par
+$numeroAleatorio = gerarNumeroAleatorio();\par
+echo "N\'famero aleat\'f3rio gerado: $numeroAleatorio";\par
+?>\par
+\cf0\par
+\b Exemplo com argumentos e retorno\par
+\b0\par
+Um exemplo com argumentos que \'e9 comumente usado na programa\'e7\'e3o \'e9 uma fun\'e7\'e3o para calcular a m\'e9dia de uma lista de n\'fameros. \par
+\par
+\cf4 <?php\par
+// Defini\'e7\'e3o da fun\'e7\'e3o\par
+\b function calcularMedia($numeros) \{\par
+    $soma = 0;\par
+    foreach ($numeros as $numero) \{\par
+        $soma += $numero;\par
+    \}\par
+    $media = $soma / count($numeros);\par
+    return $media;\par
+\}\par
+\par
+\b0 // Lista de n\'fameros\par
+$listaNumeros = array(10, 20, 30, 40, 50);\par
+\par
+// Chamada da fun\'e7\'e3o e exibi\'e7\'e3o do resultado\par
+$media = calcularMedia($listaNumeros);\par
+echo "A m\'e9dia dos n\'fameros " . implode(", ", $listaNumeros) . " \'e9: $media";\par
+?>\par
+\par
+\cf0 A fun\'e7\'e3o \b count() \b0 em PHP \'e9 usada para contar o n\'famero de elementos em uma vari\'e1vel, que pode ser um array. O \b implode\b0  \'e9 uma fun\'e7\'e3o em PHP que \'e9 usada para juntar elementos de um array em uma \'fanica string, utilizando um delimitador especificado.\par
+\par
+
+\pard\cf2\b\f2 7.3 \f0\fs28 Fun\'e7\'f5es de texto, data, codificadas e num\'e9ricas\par
+\par
+
+\pard\sl240\slmult1\qj\cf1\f1\fs22 Fun\'e7\'e3o de texto \f3\endash\f1  Retorna a um car\'e1cter espec\'edfico.\par
+\b0\par
+\cf4 <?php\par
+\tab echo chr(65);\par
+?>\par
+\par
+\cf0 Exemplo simples usando a fun\'e7\'e3o ord() para obter o c\'f3digo ASCII de um caractere espec\'edfico:\par
+\par
+\cf4 <?php\par
+// Obtendo o c\'f3digo ASCII do caractere 'A'\par
+$codigo_ASCII = ord('A');\par
+echo "O c\'f3digo ASCII de 'A' \'e9: $codigo_ASCII";\par
+?>\par
+\par
+\cf0 Neste exemplo, a fun\'e7\'e3o ord('A') retorna o c\'f3digo ASCII do caractere 'A', que \'e9 65. Em seguida, esse valor \'e9 impresso na tela.\par
+\cf1\par
+No script PHP (abaixo) \'e9 criada uma tabela HTML que lista os valores ASCII e seus caracteres correspondentes de 0 a 255. Cada linha da tabela mostra o valor ASCII (de 0 a 255) na primeira coluna e o caractere correspondente obtido usando a fun\'e7\'e3o chr() na segunda coluna.\par
+\par
+\cf4 <?php\par
+echo "<table border='1'>";\par
+echo "<tr><th>Valor</th><th>Caractere</th></tr>";\par
+\par
+for ($i = 0; $i <= 255; $i++) \{\par
+    echo "<tr>";\par
+    echo "<td>$i</td>";\par
+    echo "<td>" . chr($i) . "</td>";\par
+    echo "</tr>";\par
+\}\par
+\par
+echo "</table>";\par
+?>\par
+\cf1\par
+\cf0\b Fun\'e7\'e3o de data \f3\endash\f1  Permite a formata\'e7\'e3o da data e da hora de um local.\par
+\b0\par
+\cf4 <?php\par
+// Configura o fuso hor\'e1rio para o fuso hor\'e1rio local\par
+date_default_timezone_set('America/Sao_Paulo');\par
+\par
+// Exibe a data e hora atual formatada\par
+$dataFormatada = date("d/m/Y H:i:s");\par
+echo "Data e hora atual: $dataFormatada";\par
+?>\par
+\par
+\cf0 A fun\'e7\'e3o date() do PHP exibir\'e1 a data e hora de acordo com o fuso hor\'e1rio configurado no servidor.\par
+\par
+Se voc\'ea precisa exibir a data e hora de acordo com o fuso hor\'e1rio local do seu sistema, voc\'ea pode configurar o fuso hor\'e1rio utilizando a fun\'e7\'e3o date_default_timezone_set() antes de chamar a fun\'e7\'e3o date().\par
+\par
+\b Fun\'e7\'f5es codificadas \f3\endash\f1  retornando uma matriz de string, fra\'e7\'f5es da string original.\par
+\b0\par
+\cf4 <?php\par
+// Exemplo usando implode\par
+$array = array("apple", "banana", "orange");\par
+echo "Array antes do implode: ";\par
+var_dump($array); // Visualiza o array antes do implode\par
+echo "<br>";\par
+\par
+$string = implode(", ", $array);\par
+echo "String resultante ap\'f3s o implode: $string"."<br>"; // Visualiza a string resultante\par
+\par
+// Exemplo usando explode\par
+$string = "apple, banana, orange";\par
+echo "String antes do explode: $string <br>";\par
+$array = explode(", ", $string);\par
+echo "Array resultante ap\'f3s o explode: ";\par
+var_dump($array); // Visualiza o array resultante\par
+?>\par
+\cf0\par
+\cf1\b Resultado:\line\b0 Array antes do implode: array(3) \{ [0]=> string(5) "apple" [1]=> string(6) "banana" [2]=> string(6) "orange" \}\par
+String resultante ap\'f3s o implode: apple, banana, orange\par
+String antes do explode: apple, banana, orange\par
+Array resultante ap\'f3s o explode: array(3) \{ [0]=> string(5) "apple" [1]=> string(6) "banana" [2]=> string(6) "orange" \}\par
+\par
+\cf0\b Fun\'e7\'f5es num\'e9ricas \f3\endash\f1  Formatar uma string\par
+\b0\par
+\cf4 <?php\par
+\tab $numero = 12345.67;\par
+\tab $separador_decimal = ',';\par
+\tab $separador_milhar = '.';\par
+\tab $casas_decimais = 2;\par
+\tab $prefixo = 'R$ ';\par
+\tab $sufixo = ' (BRL)';\par
+\tab $numero_formatado = number_format($numero, $casas_decimais, $separador_decimal, $separador_milhar);\par
+\tab $numero_formatado = $prefixo . $numero_formatado . $sufixo;\par
+\tab echo $numero_formatado; // Sa\'edda: R$ 12.345,67 (BRL)\par
+\tab\par
+\tab //Exemplo de fun\'e7\'e3o\par
+\tab function formatar($numero) \{\par
+\tab\tab $retorno = number_format($numero, 2, ',', '.');\par
+\tab\tab return $retorno;\tab\tab\par
+\tab\}\par
+\tab\par
+\tab echo '<br>' . formatar($numero);\par
+?>\b\f2\par
+\par
+\cf0 RESUMO:\par
+\b0\f1 Neste cap\'edtulo, exploramos os tipos de fun\'e7\'f5es no contexto do desenvolvimento back-end em PHP. As fun\'e7\'f5es desempenham um papel crucial ao permitir a cria\'e7\'e3o de blocos de c\'f3digo reutiliz\'e1veis que executam tarefas espec\'edficas, melhorando a organiza\'e7\'e3o e a modularidade do c\'f3digo.\par
+Destacamos dois tipos principais de fun\'e7\'f5es: as nativas, que s\'e3o desenvolvidas pela equipe de engenheiros de software para organizar a linguagem PHP, e as internas, que podemos criar em nossos pr\'f3prios projetos. Para criar fun\'e7\'f5es personalizadas, seguimos a sintaxe padr\'e3o do PHP, usando a palavra-chave "function", especificando o nome da fun\'e7\'e3o e os par\'e2metros entre par\'eanteses. O corpo da fun\'e7\'e3o cont\'e9m as instru\'e7\'f5es a serem executadas, e podemos usar a palavra-chave "return" para retornar valores, se necess\'e1rio.\par
+Demonstramos como criar uma fun\'e7\'e3o simples, como calcular a soma de dois n\'fameros, e como invoc\'e1-la passando argumentos. Essas fun\'e7\'f5es s\'e3o valiosas para evitar a repeti\'e7\'e3o de c\'f3digo e melhorar a legibilidade.Al\'e9m disso, mencionamos que o PHP oferece uma vasta biblioteca de fun\'e7\'f5es nativas para realizar diversas tarefas, desde manipular strings e arrays at\'e9 trabalhar com datas e n\'fameros.\par
+Para aprofundar ainda mais o conhecimento sobre cria\'e7\'e3o de fun\'e7\'f5es em PHP, sugerimos consultar materiais complementares, como o curso de PHP 7 mencionado, que pode fornecer informa\'e7\'f5es adicionais e pr\'e1ticas sobre o assunto. A compreens\'e3o de fun\'e7\'f5es \'e9 fundamental para um desenvolvimento back-end eficaz e organizado.\par
+\par
+\b ATIVIDADES:\par
+\b0\par
+
+\pard 1. Qual \'e9 a sintaxe b\'e1sica para criar uma fun\'e7\'e3o em PHP? Liste os principais elementos que\par
+comp\'f5em a declara\'e7\'e3o de uma fun\'e7\'e3o.\par
+2. Como voc\'ea chama uma fun\'e7\'e3o em PHP? D\'ea um exemplo simples de como voc\'ea invocaria\par
+uma fun\'e7\'e3o personalizada.\par
+3. Qual \'e9 a diferen\'e7a entre uma fun\'e7\'e3o que retorna um valor e uma fun\'e7\'e3o que n\'e3o retorna\par
+nada em PHP? D\'ea exemplos de ambas.\par
+4. O que uma fun\'e7\'e3o retorna quando n\'e3o usa o comando return?\par
+5. Mencione pelo menos tr\'eas tipos de fun\'e7\'f5es que podem ser \'fateis ao trabalhar com\par
+strings em PHP. D\'ea um exemplo de cada tipo.\par
+6.O que s\'e3o fun\'e7\'f5es?\par
+7. O que s\'e3o fun\'e7\'f5es nativas?\par
+8. O que s\'e3o fun\'e7\'f5es ambiente?\par
+9. Explique a import\'e2ncia das fun\'e7\'f5es no desenvolvimento back-end em PHP. Como elas\par
+
+\pard\sl240\slmult1\qj contribuem para a organiza\'e7\'e3o do c\'f3digo e a reutiliza\'e7\'e3o de l\'f3gica?\par
+
+\pard 10. Liste pelo menos cinco fun\'e7\'f5es nativas do PHP e descreva brevemente o que cada uma\par
+
+\pard\sl240\slmult1\qj delas faz.\par
+\par
+\b RESPOSTAS:\par
+\b0 1. A sintaxe b\'e1sica para criar uma fun\'e7\'e3o em PHP \'e9:\par
+\par
+```php\par
+function nomeDaFuncao($parametro1, $parametro2, ...) \{\par
+    // Corpo da fun\'e7\'e3o\par
+    // C\'f3digo a ser executado\par
+    return $resultado; // opcional\par
+\}\par
+```\par
+\par
+Os principais elementos que comp\'f5em a declara\'e7\'e3o de uma fun\'e7\'e3o s\'e3o:\par
+- A palavra-chave `function`.\par
+- O nome da fun\'e7\'e3o.\par
+- Par\'eanteses contendo os par\'e2metros da fun\'e7\'e3o (opcionais).\par
+- Chaves que delimitam o corpo da fun\'e7\'e3o.\par
+- Opcionalmente, a palavra-chave `return` seguida do valor a ser retornado pela fun\'e7\'e3o.\par
+\par
+2. Para chamar uma fun\'e7\'e3o em PHP, basta utilizar o nome da fun\'e7\'e3o seguido pelos par\'eanteses contendo os argumentos, se houver. Aqui est\'e1 um exemplo simples de como invocar uma fun\'e7\'e3o personalizada:\par
+\par
+```php\par
+function minhaFuncao($parametro) \{\par
+    echo "O par\'e2metro recebido \'e9: $parametro";\par
+\}\par
+\par
+minhaFuncao("Ol\'e1, mundo!");\par
+```\par
+\par
+3. A diferen\'e7a entre uma fun\'e7\'e3o que retorna um valor e uma fun\'e7\'e3o que n\'e3o retorna nada em PHP \'e9 que a primeira retorna um valor espec\'edfico, enquanto a segunda n\'e3o retorna nenhum valor. Aqui est\'e3o exemplos de ambas:\par
+\par
+Fun\'e7\'e3o que retorna um valor:\par
+```php\par
+function soma($a, $b) \{\par
+    return $a + $b;\par
+\}\par
+\par
+$resultado = soma(3, 5);\par
+echo $resultado; // Sa\'edda: 8\par
+```\par
+\par
+Fun\'e7\'e3o que n\'e3o retorna nada:\par
+```php\par
+function exibirMensagem($mensagem) \{\par
+    echo $mensagem;\par
+\}\par
+\par
+exibirMensagem("Ol\'e1, mundo!");\par
+```\par
+\par
+4. Quando uma fun\'e7\'e3o em PHP n\'e3o usa o comando `return`, ela simplesmente n\'e3o retorna nenhum valor. Nesse caso, ao chamar a fun\'e7\'e3o, ela executa suas instru\'e7\'f5es internas, mas n\'e3o h\'e1 nenhum valor espec\'edfico sendo retornado. O retorno ser\'e1 `null`.\par
+\par
+5. Tr\'eas tipos de fun\'e7\'f5es \'fateis ao trabalhar com strings em PHP s\'e3o:\par
+\par
+- `strlen()`: Retorna o comprimento de uma string.\par
+```php\par
+$string = "Ol\'e1, mundo!";\par
+$tamanho = strlen($string);\par
+echo $tamanho; // Sa\'edda: 11\par
+```\par
+\par
+- `substr()`: Retorna uma parte de uma string.\par
+```php\par
+$string = "Hello, world!";\par
+$sub_string = substr($string, 0, 5);\par
+echo $sub_string; // Sa\'edda: Hello\par
+```\par
+\par
+- `str_replace()`: Substitui todas as ocorr\'eancias de uma substring por outra em uma string.\par
+```php\par
+$string = "Hello, world!";\par
+$nova_string = str_replace("Hello", "Ol\'e1", $string);\par
+echo $nova_string; // Sa\'edda: Ol\'e1, world!\par
+```\par
+\par
+6. Fun\'e7\'f5es s\'e3o blocos de c\'f3digo que podem ser reutilizados em diferentes partes do programa, evitando repeti\'e7\'f5es e facilitando a manuten\'e7\'e3o. Elas permitem modularizar o c\'f3digo, separando-o em partes menores e mais claras, o que torna o c\'f3digo mais organizado e leg\'edvel.\par
+\par
+7. Fun\'e7\'f5es nativas s\'e3o aquelas que j\'e1 s\'e3o fornecidas pela linguagem PHP. Elas s\'e3o desenvolvidas pela equipe de engenheiros de software para organizar a linguagem PHP e fornecer funcionalidades b\'e1sicas para os desenvolvedores.\par
+\par
+8. Fun\'e7\'f5es ambiente s\'e3o fun\'e7\'f5es que n\'e3o fazem parte da linguagem PHP em si, mas est\'e3o dispon\'edveis no ambiente de execu\'e7\'e3o, como fun\'e7\'f5es definidas pelo usu\'e1rio ou fun\'e7\'f5es de bibliotecas externas.\par
+\par
+9. As fun\'e7\'f5es s\'e3o importantes no desenvolvimento back-end em PHP porque permitem a organiza\'e7\'e3o do c\'f3digo, a reutiliza\'e7\'e3o de l\'f3gica e a simplifica\'e7\'e3o de tarefas complexas. Elas contribuem para tornar o c\'f3digo mais leg\'edvel, modular e f\'e1cil de manter.\par
+\par
+10. Cinco fun\'e7\'f5es nativas do PHP s\'e3o:\par
+\par
+- `strlen()`: Retorna o comprimento de uma string.\par
+- `implode()`: Junta elementos de um array em uma string usando um delimitador.\par
+- `explode()`: Divide uma string em um array de substrings com base em um delimitador.\par
+- `date()`: Formata a data e hora atual de acordo com o formato especificado.\par
+- `number_format()`: Formata um n\'famero com os milhares agrupados e a quantidade de casas decimais especificada.\cf4\par
+}
+ 
