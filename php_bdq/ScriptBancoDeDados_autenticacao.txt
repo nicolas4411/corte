@@ -1,0 +1,50 @@
+-- Criação do banco de dados se não existir
+CREATE DATABASE IF NOT EXISTS autenticacao;
+USE autenticacao;
+
+-- Criação da tabela `usuarios`
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha_hash VARCHAR(255) NOT NULL,
+    verificado TINYINT(1) DEFAULT 0
+);
+
+-- Criação da tabela `codigos_verificacao`
+CREATE TABLE IF NOT EXISTS codigos_verificacao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    codigo VARCHAR(6) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Criação da tabela `codigos_redefinicao`
+CREATE TABLE IF NOT EXISTS codigos_redefinicao (
+    usuario_id INT PRIMARY KEY,
+    codigo VARCHAR(6),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+-- Criação da tabela `questoes` com a coluna `assunto`
+CREATE TABLE IF NOT EXISTS questoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    enunciado TEXT NOT NULL,
+    alternativa1 VARCHAR(255) NOT NULL,
+    alternativa2 VARCHAR(255) NOT NULL,
+    alternativa3 VARCHAR(255) NOT NULL,
+    alternativa4 VARCHAR(255) NOT NULL,
+    alternativa5 VARCHAR(255) NOT NULL,
+    alternativa_correta INT NOT NULL,
+    assunto VARCHAR(100) NOT NULL
+);
+
+-- Inserção de dados na tabela `questoes`
+INSERT INTO `questoes` (`id`, `enunciado`, `alternativa1`, `alternativa2`, `alternativa3`, `alternativa4`, `alternativa5`, `alternativa_correta`, `assunto`) VALUES
+(1, 'Qual das operações de CRUD é usada para adicionar um novo registro ao banco de dados?', 'Atualizar', 'Excluir', 'Ler', 'Criar', 'Modificar', 4, 'PHP - CRUD'),
+(2, 'Em um sistema CRUD, qual operação permite visualizar dados armazenados sem alterá-los?', 'Atualizar', 'Ler', 'Excluir', 'Criar', 'Modificar', 2, 'PHP - CRUD'),
+(3, 'Qual é a função do comando SQL DELETE em operações CRUD?', 'Atualizar registros', 'Exibir registros', 'Deletar registros', 'Criar registros', 'Editar registros', 3, 'PHP - CRUD'),
+(4, 'Qual das operações de CRUD geralmente envolve o uso do comando SQL UPDATE?', 'Ler', 'Excluir', 'Atualizar', 'Criar', 'Adicionar', 3, 'PHP - CRUD'),
+(5, 'Qual é a principal função de session_start() em PHP?', 'Criar uma nova variável de sessão.', 'Iniciar uma nova sessão ou retomar uma sessão existente.', 'Enviar informações de sessão para o navegador.', 'Validar a autenticidade do usuário logado.', 'Enviar dados do servidor para o cliente.', 2, 'PHP_SESSION'),
+(6, 'O que acontece se session_start() for chamado após enviar dados para o navegador em PHP?', 'A sessão será iniciada corretamente, sem problemas.', 'O PHP ignora a função session_start() e a sessão não é criada.', 'A sessão será criada, mas o navegador não receberá cookies.', 'Um erro será gerado e o script será interrompido.', 'O servidor automaticamente gera um novo cookie de sessão.', 4, 'PHP_SESSION');

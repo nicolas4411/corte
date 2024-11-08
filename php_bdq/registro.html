@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuário</title>
+    <link rel="stylesheet" href="estilos.css"> <!-- Opcional: Adicione um arquivo de estilo externo -->
+    <style>
+        .strength {
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .strength.weak {
+            color: red;
+        }
+        .strength.medium {
+            color: orange;
+        }
+        .strength.strong {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registro de Usuário</h2>
+    <form action="registro.php" method="POST" onsubmit="return validarFormulario()">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required oninput="verificarForcaSenha()">
+        <div id="forcaSenha" class="strength"></div>
+        
+        <label for="confirmar_senha">Confirmar Senha:</label>
+        <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+        
+        <button type="submit">Registrar</button>
+    </form>
+	<p><a href="index.html">Home</a></p>
+
+    <script>
+        function verificarForcaSenha() {
+            const senha = document.getElementById("senha").value;
+            const forcaSenha = document.getElementById("forcaSenha");
+            
+            let forca = 0;
+            if (senha.length >= 8) forca++;
+            if (/[A-Z]/.test(senha)) forca++;
+            if (/[a-z]/.test(senha)) forca++;
+            if (/[0-9]/.test(senha)) forca++;
+            if (/[\W]/.test(senha)) forca++;
+            
+            if (forca <= 2) {
+                forcaSenha.textContent = "Fraca";
+                forcaSenha.className = "strength weak";
+            } else if (forca === 3 || forca === 4) {
+                forcaSenha.textContent = "Média";
+                forcaSenha.className = "strength medium";
+            } else {
+                forcaSenha.textContent = "Forte";
+                forcaSenha.className = "strength strong";
+            }
+        }
+
+        function validarFormulario() {
+            const senha = document.getElementById("senha").value;
+            const confirmarSenha = document.getElementById("confirmar_senha").value;
+
+            if (senha !== confirmarSenha) {
+                alert("As senhas não coincidem.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
